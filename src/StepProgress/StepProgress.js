@@ -27,7 +27,6 @@ function StepProgress() {
         <div id="progressColor" style={{ width: progressColor }} />
       </div>
       {stepperArr.map((perc, index) => {
-        const percVal = perc + "%";
         let bgcolor = "grey";
         let imgsrc = "";
         const tickImgPerc = parseInt(perc) + 20;
@@ -37,11 +36,10 @@ function StepProgress() {
           : (imgsrc = "none");
 
         return (
-          <div
-            className="stepper"
-            onClick={() => handleProgress(perc)}
-          >
-            {imgsrc !== "none" && <img src={imgsrc} className="tickImg" />}
+          <div className="stepper" onClick={() => handleProgress(perc)}>
+            {imgsrc !== "none" && (
+              <img src={imgsrc} className="tickImg" alt="tick" />
+            )}
             <div className="dot" style={{ backgroundColor: bgcolor }} />
             {bgcolor !== "white" && (
               <p className="stepperLabel">{stepLabel[index]}</p>
